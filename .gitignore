@@ -1,0 +1,8 @@
+# Complied:
+/*/*/Debug/*
+
+# .vs:
+/*/.vs/*
+
+# ComponentInfo:
+/*/*/*.componentinfo.xml
