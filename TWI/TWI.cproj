@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{d7d1e1b2-ef83-44d8-b647-bcd56a0dfa91}</ProjectGuid>
     <avrdevice>ATmega168</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>Clock</AssemblyName>
-    <Name>Clock</Name>
-    <RootNamespace>Clock</RootNamespace>
+    <AssemblyName>TWI</AssemblyName>
+    <Name>TWI</Name>
+    <RootNamespace>TWI</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -38,6 +38,8 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <ResetRule>0</ResetRule>
+    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -118,19 +120,10 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="APP_Clock.c">
+    <Compile Include="HAL_TWI_MST.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP_Clock.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="F_CPU.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL_USART.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL_USART.h">
+    <Compile Include="HAL_TWI_MST.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

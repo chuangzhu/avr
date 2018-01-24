@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{2bdec70f-b22b-49d9-b829-8cec39a0916d}</ProjectGuid>
     <avrdevice>ATmega168</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>TIMER</AssemblyName>
-    <Name>TIMER</Name>
-    <RootNamespace>TIMER</RootNamespace>
+    <AssemblyName>ADXL345</AssemblyName>
+    <Name>ADXL345</Name>
+    <RootNamespace>ADXL345</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -38,6 +38,8 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <ResetRule>0</ResetRule>
+    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -118,10 +120,25 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DEV_ADXL345.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DEV_ADXL345.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="F_CPU.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL_TIMER.h">
+    <Compile Include="HAL_TWI_MST.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL_TWI_MST.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL_USART.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL_USART.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

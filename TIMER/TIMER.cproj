@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{680bd3d6-88ef-4f40-badd-5ab6bc79ecbd}</ProjectGuid>
     <avrdevice>ATmega168</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,18 +12,18 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>ADC</AssemblyName>
-    <Name>ADC</Name>
-    <RootNamespace>ADC</RootNamespace>
+    <AssemblyName>TIMER</AssemblyName>
+    <Name>TIMER</Name>
+    <RootNamespace>TIMER</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <RamSnippetAddress />
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <OverrideVtorValue />
     <BootSegment>2</BootSegment>
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <AsfFrameworkConfig>
@@ -38,7 +38,8 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
-    <avrtool />
+    <ResetRule>0</ResetRule>
+    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -122,16 +123,7 @@
     <Compile Include="F_CPU.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL_ADC.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL_ADC.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL_USART.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL_USART.h">
+    <Compile Include="HAL_TIMER.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
