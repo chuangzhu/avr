@@ -9,7 +9,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "HAL_ADC.h"
-#include "HAL_USART.h"
+#include "../USART/HAL_USART.h"
 
 int main(void)
 {

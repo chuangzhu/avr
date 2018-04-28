@@ -129,16 +129,16 @@
     <Compile Include="F_CPU.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL_TWI_MST.c">
+    <Compile Include="../TWI/HAL_TWI_MST.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL_TWI_MST.h">
+    <Compile Include="../TWI/HAL_TWI_MST.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL_USART.c">
+    <Compile Include="../USART/HAL_USART.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL_USART.h">
+    <Compile Include="../USART/HAL_USART.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

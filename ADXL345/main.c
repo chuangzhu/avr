@@ -8,8 +8,8 @@
 #include "F_CPU.h"
 #include <avr/io.h>
 #include <util/delay.h>
-#include "HAL_TWI_MST.h"
-#include "HAL_USART.h"
+#include "../TWI/HAL_TWI_MST.h"
+#include "../USART/HAL_USART.h"
 #include "DEV_ADXL345.h"
 
 #define set(Reg, Bit)	Reg|=(1<<Bit)	//置位Reg寄存器的Bit位

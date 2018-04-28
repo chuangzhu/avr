@@ -9,7 +9,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "APP_Clock.h"
-#include "HAL_USART.h"
+#include "../USART/HAL_USART.h"
 
 
 int main(void)

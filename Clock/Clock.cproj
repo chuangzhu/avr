@@ -129,10 +129,10 @@
     <Compile Include="F_CPU.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL_USART.c">
+    <Compile Include="../USART/HAL_USART.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL_USART.h">
+    <Compile Include="../USART/HAL_USART.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

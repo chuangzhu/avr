@@ -9,7 +9,7 @@
 #ifndef _DEV_ADXL345_H_
 #define _DEV_ADXL345_H_
 
-#include "HAL_TWI_MST.h"
+#include "../TWI/HAL_TWI_MST.h"
 
 #define SLAVEaddr	(0x53<<1)	//ADXL345地址，如果ALT ADDRESS悬空它为(0x1D<<1)，如果接地它为(0x53<<1)
 #define OUTratio 4	//全分辨率下XOUT,YOUT,ZOUT比例因子，(mg/LSB)
