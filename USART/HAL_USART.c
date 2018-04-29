@@ -13,16 +13,16 @@
 #define F_CPU 8000000
 #endif
 
-#ifndef baud
-# warning "baud not defined for <HAL_USART.c>"
-#define baud 9600
+#ifndef BAUD
+# warning "BAUD not defined for <HAL_USART.c>"
+#define BAUD 9600
 #endif
 
 //开始USART通讯
 void USART_Begin(void)
 {
-	UBRR0H=(F_CPU/16/baud-1)/256;
-	UBRR0L=(F_CPU/16/baud-1)%256;
+	UBRR0H=(F_CPU/16/BAUD-1)/256;
+	UBRR0L=(F_CPU/16/BAUD-1)%256;
 	UCSR0B=(1<<RXEN0)|(1<<TXEN0);	//使能发送接收
 	//UCSR0B|=(1<<RXCIE0);	//使能接收中断
 	UCSR0C=(1<<UCSZ01)|(1<<UCSZ00);	//8bit
