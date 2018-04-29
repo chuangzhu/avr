@@ -23,8 +23,11 @@ void USART_Begin(void)
 {
 	UBRR0H=(F_CPU/16/BAUD-1)/256;
 	UBRR0L=(F_CPU/16/BAUD-1)%256;
-	UCSR0B=(1<<RXEN0)|(1<<TXEN0);	//使能发送接收
-	//UCSR0B|=(1<<RXCIE0);	//使能接收中断
+#ifndef USART_RX_ENABLE
+	UCSR0B=(1<<TXEN0);	//使能发送
+#else
+	UCSR0B=(1<<TXEN0)|(1<<RXEN0)|(1<<RXCIE0);	//使能接收中断
+#endif
 	UCSR0C=(1<<UCSZ01)|(1<<UCSZ00);	//8bit
 }
 
@@ -68,20 +71,3 @@ void USART_SendLine(void)
 	USART_SendByte(0X0D);	//回车CR(\r)
 	USART_SendByte(0X0A);	//换行LF(\n)
 }
-
-/*
-//向USART发送浮点数（通过联合体）
-void USART_SendFloat(float data)
-{
-	union convert	//一个将浮点数切成块的盒子
-	{
-		float oriData;	//原来的数据
-		unsigned char conData[4];	//从盒子里面拿出来的数据,一个浮点可以被切成4个字节小块
-	} convertion ;	//声明一个这样的小盒子
-	convertion.oriData = data;	//向盒子中塞入浮点数据
-	for(unsigned char count=0; count<4; count++)	//将取出的4个小块分次发送
-	{
-		while(!((UCSR0A)&(1<<UDRE0)));	//等待
-		UDR0=convertion.conData[3-count];	//放入
-	}
-}*/
