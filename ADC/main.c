@@ -5,7 +5,6 @@
  * Author : geneLocated
  */ 
 
-#include "F_CPU.h"
 #include <avr/io.h>
 #include <util/delay.h>
 #include "HAL_ADC.h"

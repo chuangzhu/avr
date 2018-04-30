@@ -1,4 +1,4 @@
-/*
+﻿/*
  * HAL_USART.h
  * 此库只适用于Atmega48/88/168/328单片机
  * 若应用于其他型号一些寄存器的值需要修改
@@ -11,7 +11,7 @@
 
 #include <avr/io.h>
 
-/* 请在<F_CPU.h>中定义时钟频率和波特率*/
+/* 请在 Project>Properties>Toolchain>AVR/GNU C Complier>Symbols 中定义时钟频率和波特率*/
 
 void USART_Begin(void);	//开始USART通讯
 void USART_SendByte(unsigned char x);	//发送一个字节

@@ -8,7 +8,7 @@
  *  Author: geneLocated
  */ 
 
-#include "F_CPU.h"	/* 请在<F_CPU.h>中定义时钟频率*/
+/* 请在 Project>Properties>Toolchain>AVR/GNU C Complier>Symbols 中定义时钟频率*/
 #include "APP_Clock.h"
 
 #ifndef F_CPU

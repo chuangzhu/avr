@@ -1,11 +1,11 @@
-/*
+﻿/*
  * HAL_USART.c
  * 此库只适用于Atmega48/88/168/328单片机
  * 若应用于其他型号一些寄存器的值需要修改
  * Modified: 2017/10/3
  * Author : geneLocated
  */ 
-#include "F_CPU.h"	/* 请在<F_CPU.h>中定义时钟频率和波特率*/
+/* 请在 Project>Properties>Toolchain>AVR/GNU C Complier>Symbols 中定义时钟频率和波特率*/
 #include "HAL_USART.h"
 
 #ifndef F_CPU
