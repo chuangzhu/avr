@@ -3,10 +3,9 @@
  * 时间应用库测试程序
  * Created: 2017/10/3 16:31:55
  * Author : geneLocated
- */ 
+ */
 
-#include "F_CPU.h"
-#include <avr/io.h>
+ #include <avr/io.h>
 #include <util/delay.h>
 #include "APP_Clock.h"
 #include "../USART/HAL_USART.h"

@@ -15,7 +15,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-/* 请在<F_CPU.h>中定义时钟频率和波特率*/
+/* 请在 Project>Properties>Toolchain>AVR/GNU C Complier>Symbols 中定义时钟频率和波特率*/
 
 void Clock_Init(void);
 

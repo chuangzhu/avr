@@ -5,7 +5,6 @@
  * Author : geneLocated
  */ 
 
-#include "F_CPU.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "HAL_TIMER.h"

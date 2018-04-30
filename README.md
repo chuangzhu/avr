@@ -1,3 +1,4 @@
+
 # Atmel 8bit MCUs (__AVR__) Libraries
 Based on __ATmega48/88/168/328(P)__, may not perform properly on other chips.  
 
@@ -6,7 +7,10 @@ Those library files you need are named like: `HAL_ADC.c` `DEV_ADXL345.c` `APP_Cl
 
 ### USART
 The USART serial _hardware abstract_ library, normally used to transfer data with Computers.  
-You should define the __frequency of crystal__ `F_CPU` and `baud` in a file called `F_CPU.h`.
+You should define the __frequency of crystal__ `F_CPU` and `BAUD` at `Project> Properties> Toolchain> AVR/GNU C Complier> Symbols` (*Don't include whitespaces*) like this:
+```Makefile
+F_CPU=8000000
+```
 
 ### ADC
 The Analog-Digital-Converter _hardware abstract_ library.
@@ -18,7 +22,7 @@ You should define the __frequency of crystal__ `F_CPU` in a file called `F_CPU.h
 ### TIMER
 The TIMER0&2 _hardware abstract_ library, uses macro to calculate `TCCRxB` and `TCNTx` for __TIMER0__ and __TIMER2__ with the period you set.  
 This library contains only a .h file.  
-You should define the __frequency of crystal__ `F_CPU`, `TIMER0_Period` and `TIMER2_Period` (unit: microsecond __¦Ìs__) in a file called `F_CPU.h`.
+You should define the __frequency of crystal__ `F_CPU`, `TIMER0_Period` and `TIMER2_Period` (unit: microsecond __Î¼s__) at `Project> Properties> Toolchain> AVR/GNU C Complier> Symbols`.
 
 ### TWI
 The TWI (IIC, __I<sup>2</sup>C__) _hardware abstract_ library.

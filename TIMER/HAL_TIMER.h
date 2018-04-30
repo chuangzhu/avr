@@ -3,7 +3,7 @@
  * TIMER硬件抽象库
  * 仅适用于ATmega48/88/168/328
  * 若应用于其他型号一些寄存器的值需要更改
- * 请在<F_CPU.h>中定义时钟频率及TIMER0溢出的周期
+ * 请在 Project>Properties>Toolchain>AVR/GNU C Complier>Symbols 中添加时钟频率及TIMER0溢出的周期的定义
  * Created: 2017/10/5 22:43:01
  *  Author: geneLocated
  */ 
@@ -13,24 +13,30 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include "F_CPU.h"
 
-#ifndef F_CPU	/*晶振的频率，单位Hz*/	/*请在<F_CPU.h>中定义*/
+/*晶振的频率，单位Hz*/
+/*请在 Project>Properties>Toolchain>AVR/GNU C Complier>Symbols 中定义*/
+#ifndef F_CPU
 	# warning "F_CPU is not defined for HAL_TIMER.c"
 	#define F_CPU 1000000
 #endif
 
-#ifndef TIMER0_Period /*TIMER0溢出的周期，单位us (Micro Sencond)*/	/*请在<F_CPU.h>中定义*/
+/*TIMER0溢出的周期，单位us (Micro Sencond)*/
+/*请在 Project>Properties>Toolchain>AVR/GNU C Complier>Symbols 中定义*/
+#ifndef TIMER0_Period
 	# warning "TIMER0_Period is not defined for HAL_TIMER.c"
 	#define TIMER0_Period 50000
 #endif
 
-#ifndef TIMER2_Period /*TIMER2溢出的周期，单位us (Micro Sencond)*/	/*请在<F_CPU.h>中定义*/
+/*TIMER2溢出的周期，单位us (Micro Sencond)*/
+/*请在 Project>Properties>Toolchain>AVR/GNU C Complier>Symbols 中定义*/
+#ifndef TIMER2_Period
 	# warning "TIMER2_Period is not defined for HAL_TIMER.c"
 	#define TIMER2_Period 50000
 #endif
 
-#define TxF0 (TIMER0_Period*(F_CPU/1000000))	/*TIMER0_Period 单位为微秒，除以1 000 000转换为国际单位*/
+/*TIMER0_Period 单位为微秒，除以1 000 000转换为国际单位*/
+#define TxF0 (TIMER0_Period*(F_CPU/1000000))
 #define TxF2 (TIMER2_Period*(F_CPU/1000000))
 
 #if TxF0<=256
@@ -75,24 +81,26 @@
 	#define TCNT2_Init	0
 #endif
 
+/* 计时器初始化 */
 #define TIMER0_Init()	{\
 	TCCR0B=TCCR0B_Init;\
 	TCNT0=TCNT0_Init;\
 	TIMSK0|=(1<<TOIE0);}
 
+/* 计时器初始化 */
 #define TIMER2_Init()	{\
 	TCCR2B=TCCR2B_Init;\
 	TCNT2=TCNT2_Init;\
 	TIMSK2|=(1<<TOIE2);}
 
-#endif /* HAL_TIMER_H_ */
-
 /* 写中断函数时应该这么写：
 	ISR(TIMER0_OVF_vect)
 	{
-		TCNT0=TCNT0_Init;	//这句一定要加上！
-		{
-			//你要写的函数内容
-		}
+		TCNT0=TCNT0_Init;
+		//你要写的函数内容
 	}
  */
+#define TIMER0_Reset() TCNT0=TCNT0_Init;
+#define TIMER2_Reset() TCNT2=TCNT2_Init;
+
+#endif /* HAL_TIMER_H_ */
