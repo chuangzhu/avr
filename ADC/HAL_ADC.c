@@ -8,13 +8,6 @@
 
 #include "HAL_ADC.h"
 
-void ADC_Init(void)	//ADC初始化
-{
-	ADCSRA = 0x00;	//禁用ADC
-	ADMUX = 0x40;	//设置参考电压为AVCC，右对齐
-	ADCSRA = 0x86;	//设置分频数为64，使能ADC
-}
-
 unsigned int ADConvert(unsigned char Channel)	//AD转换
 {
 	unsigned int CData;

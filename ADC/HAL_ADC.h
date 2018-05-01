@@ -11,7 +11,16 @@
 
 #include <avr/io.h>
 
-void ADC_Init(void);
+#define ADC_Init() {\
+	ADCSRA = 0x00;	/*禁用ADC*/ \
+	ADMUX = 0x40;	/*设置参考电压为AVCC，右对齐*/ \
+	ADCSRA = 0x86;	/*设置分频数为64，使能ADC*/ \
+}
+
+#define ADC_Disenable() {\
+	ADCSRA = 0x00;\
+}
+
 unsigned int ADConvert(unsigned char Channel);
 
 #endif
