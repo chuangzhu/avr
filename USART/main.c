@@ -1,4 +1,4 @@
-/*
+﻿/*
  * main.c
  * HAL_USART库测试程序
  * Modified: 2017/10/3

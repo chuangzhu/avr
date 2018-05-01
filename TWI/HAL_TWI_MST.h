@@ -1,4 +1,4 @@
-/*
+﻿/*
  * HAL_TWI_MST.h
  * TWI/IIC/I2C主机库
  * 此库只适用于Atmega48/88/168/328单片机
