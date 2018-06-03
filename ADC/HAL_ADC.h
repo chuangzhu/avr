@@ -17,7 +17,7 @@
 	ADCSRA = 0x86;	/*设置分频数为64，使能ADC*/ \
 }
 
-#define ADC_Disenable() {\
+#define ADC_Disable() {\
 	ADCSRA = 0x00;\
 }
 
