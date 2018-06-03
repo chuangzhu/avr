@@ -1,6 +1,15 @@
 /*
  * HAL_PWM.h
- *
+ * __PLEASE DEFINE THE PINS YOU ARE GOING TO USE BEFORE YOU INCLUDE THIS FILE__
+ * Example:
+       #define PWM_0A_ENABLE
+       #define PWM_1B_ENABLE
+       #include "HAL_PWM.h"
+       int main() {
+           PWM_Init();
+		   PWM_0A(0x32);
+		   PWM_1B(0x3FFF);
+       }
  * Created: 2018/6/3 12:02:35
  *  Author: geneLocated
  */ 
@@ -104,17 +113,48 @@
 
 
 
+/*
+ * Enable PWM.
+ * __PLEASE DEFINE THE PINS YOU ARE GOING TO USE BEFORE YOU INCLUDE THIS FILE__
+ * Example:
+       #define PWM_0A_ENABLE
+       #define PWM_1B_ENABLE
+       #include "HAL_PWM.h"
+       int main() {
+           PWM_Init();
+		   PWM_0A(0x32);
+		   PWM_1B(0x3FFF);
+       }
+ */
 #define PWM_Init() {\
 	_PWM_0_INIT()\
 	_PWM_2_INIT()\
 	_PWM_1_INIT()\
 }
 
-#define PWM_0A(v) { OCR0A = v; }	/* Write PWM value to OC0A (PD6) */
-#define PWM_0B(v) { OCR0B = v; }	/* Write PWM value to OC0B (PD5) */
-#define PWM_2A(v) { OCR2A = v; }	/* Write PWM value to OC2A (PB3) */
-#define PWM_2B(v) { OCR2B = v; }	/* Write PWM value to OC2B (PD3) */
-#define PWM_1A(v) { OCR1A = v; }	/* Write PWM value to OC1A (PB1) */
-#define PWM_1B(v) { OCR1B = v; }	/* Write PWM value to OC1B (PB2) */
+#ifdef PWM_0A_ENABLE
+	/* Write PWM value to OC0A (PD6) */
+	#define PWM_0A(v) { OCR0A = v; }
+#endif
+#ifdef PWM_0B_ENABLE
+	/* Write PWM value to OC0B (PD5) */
+	#define PWM_0B(v) { OCR0B = v; }
+#endif
+#ifdef PWM_2A_ENABLE
+	/* Write PWM value to OC2A (PB3) */
+	#define PWM_2A(v) { OCR2A = v; }
+#endif
+#ifdef PWM_2B_ENABLE
+	/* Write PWM value to OC2B (PD3) */
+	#define PWM_2B(v) { OCR2B = v; }
+#endif
+#ifdef PWM_1A_ENABLE
+	/* Write PWM value to OC1A (PB1) */
+	#define PWM_1A(v) { OCR1A = v; }
+#endif
+#ifdef PWM_1B_ENABLE
+	/* Write PWM value to OC1B (PB2) */
+	#define PWM_1B(v) { OCR1B = v; }
+#endif
 
 #endif /* HAL_PWM_H_ */

@@ -121,9 +121,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="HAL_PWM.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="HAL_PWM.h">
       <SubType>compile</SubType>
     </Compile>
