@@ -15,22 +15,22 @@
 
 /* PWM OC0A & OC0B */
 #if defined(PWM_0A_ENABLE) && defined(PWM_0B_ENABLE)
-	#define _PWM_DDRD_SET ((1<<PORTD6)|(1<<PORTD5))
+	#define _PWM_DDRD_0_SET ((1<<PORTD6)|(1<<PORTD5))
 	#define _PWM_TCCR0A_SET ((1<<COM0A1)|(1<<COM0B1)|(1<<WGM00)|(1<<WGM01))
 	#define _PWM_TCCR0A_CLR ((1<<COM0A0)|(1<<COM0B0))
 #elif defined(PWM_0A_ENABLE)
-	#define _PWM_DDRD_SET ((1<<PORTD6))
+	#define _PWM_DDRD_0_SET ((1<<PORTD6))	//OC0A
 	#define _PWM_TCCR0A_SET ((1<<COM0A1)|(1<<WGM00)|(1<<WGM01))
 	#define _PWM_TCCR0A_CLR ((1<<COM0A0)|(1<<COM0B0)|(1<<COM0B1))
 #elif defined(PWM_0B_ENABLE)
-	#define _PWM_DDRD_SET ((1<<PORTD5))
+	#define _PWM_DDRD_0_SET ((1<<PORTD5))	//OC0B
 	#define _PWM_TCCR0A_SET ((1<<COM0B1)|(1<<WGM00)|(1<<WGM01))
 	#define _PWM_TCCR0A_CLR ((1<<COM0A0)|(1<<COM0B0)|(1<<COM0A1))
 #endif
 
 #if defined(PWM_0A_ENABLE) || defined(PWM_0B_ENABLE)
 	#define _PWM_0_INIT() {\
-		DDRD |= _PWM_DDRD_SET;\
+		DDRD |= _PWM_DDRD_0_SET;\
 		TCCR0A |= _PWM_TCCR0A_SET;\
 		TCCR0A &= ~_PWM_TCCR0A_CLR;\
 		TCCR0B |= (1<<CS00);\
@@ -42,10 +42,42 @@
 
 
 
+/* PWM OC2A & OC2B */
+#if defined(PWM_2A_ENABLE) && defined(PWM_2B_ENABLE)
+	#define _PWM_DDRD_2_SET ((1<<PORTD3))	//OC2B
+	#define _PWM_DDRB_2_SET ((1<<PORTB3))	//OC2A
+	#define _PWM_TCCR2A_SET ((1<<COM2A1)|(1<<COM2B1)|(1<<WGM20)|(1<<WGM21))
+	#define _PWM_TCCR2A_CLR ((1<<COM2A0)|(1<<COM2B0))
+#elif defined(PWM_2A_ENABLE)
+	#define _PWM_DDRD_2_SET (0)
+	#define _PWM_DDRB_2_SET ((1<<PORTB3))	//OC2A
+	#define _PWM_TCCR2A_SET ((1<<COM2A1)|(1<<WGM20)|(1<<WGM21))
+	#define _PWM_TCCR2A_CLR ((1<<COM2A0)|(1<<COM2B0)|(1<<COM2B1))
+#elif defined(PWM_2B_ENABLE)
+	#define _PWM_DDRD_2_SET ((1<<PORTD3))	//OC2B
+	#define _PWM_DDRB_2_SET (0)
+	#define _PWM_TCCR2A_SET ((1<<COM2B1)|(1<<WGM20)|(1<<WGM21))
+	#define _PWM_TCCR2A_CLR ((1<<COM2A0)|(1<<COM2B0)|(1<<COM2A1))
+#endif
+
+#if defined(PWM_2A_ENABLE) || defined(PWM_2B_ENABLE)
+	#define _PWM_2_INIT() {\
+		DDRD |= _PWM_DDRD_2_SET;\
+		DDRB |= _PWM_DDRB_2_SET;\
+		TCCR2A |= _PWM_TCCR2A_SET;\
+		TCCR2A &= ~_PWM_TCCR2A_CLR;\
+		TCCR2B |= (1<<CS20);\
+		TCCR2B &= ~((1<<CS22)|(1<<CS21));\
+	}
+#else
+	#define _PWM_2_INIT() {}
+#endif
+
+
+
 #define PWM_Init() {\
 	_PWM_0_INIT()\
 	_PWM_2_INIT()\
-	_PWM_1_INIT()\
 }
 
 #define PWM_0A(v) { OCR0A = v; }	/* Write PWM value to OC0A (PD6) */

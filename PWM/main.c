@@ -9,7 +9,6 @@
 #include <util/delay.h>
 
 #define PWM_0A_ENABLE
-#define PWM_0B_ENABLE
 #include "HAL_PWM.h"
 
 int main(void)
